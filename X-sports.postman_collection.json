@@ -1,0 +1,1602 @@
+{
+	"info": {
+		"_postman_id": "8a535fbe-479c-422d-bb9d-7a927b119dad",
+		"name": "X-sports",
+		"description": "## GETTER\n\nfilter: {\"key\": value}, json\n\nsearch: {\"key\": value}, json\n\nsort: \"key,value\", string, value must be DESC or ASC,\n\nbetween: {.\"key\": {.\"from\": fromValue, \"to\": toValue } }, json\n\npagination: 1 or 0, 0 is equual to not sended\n\npage: value, value is number\n\nlimit : value, value is number\n\n## WORKING WITH FILES\n\nin admin folder you can see request add file, upload all files with this request, get file name, after that request to route and send this name as string\n\n## WORKING WITH REQUESTS\n\nin all requests if you see field is not selected it means that field is not required, if selected required.\n\nin all **update** and **delete** requests you must send **id,** which is your data id\n\nsend **Authorization** in request headers,\n\nif you use the production mode, use **{{url}}** from env,  \nelse use **{{devUrl}}**\n\n## RESPONSE\n\n{  \n\"error\": isError,  \n\"message\": message,  \n\"status\": status  \n\"timestamp\": timestamp  \n\"path\": path  \n}",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22325442"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "a.muradyan@inorain.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "akmli6964",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/admin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/apple/Desktop/category_icon.webp"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/file",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"file"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{devUrl}}/file",
+							"host": [
+								"{{devUrl}}"
+							],
+							"path": [
+								"file"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/admin/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"admin",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "BundesLiga",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-for-admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/categories/admin?pagination=1&limit=1&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"admin"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{devUrl}}/categories?pagination=1&limit=1&page=1",
+							"host": [
+								"{{devUrl}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "{\"name\": \"Foo\"}",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "id,DESC",
+									"disabled": true
+								},
+								{
+									"key": "pagination",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "between",
+									"value": "{\"id\": {\"from\": 1, \"to\": 3}}",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "{\"id\": 1}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Basketball",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "icon",
+									"value": "icon.png",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archive",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categories/archive",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"archive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unarchive",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categories/unarchive",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"unarchive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chanels",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/chanels?pagination=1&limit=1&page=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chanels"
+							],
+							"query": [
+								{
+									"key": "pagination",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "categoryId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "{\"name\":  \"e\"}",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Eurosport",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://www.youtube.com/watch?v=8Sh8g5suqp4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "no description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "logo",
+									"value": "1663073231974_category_icon.webp",
+									"type": "text"
+								},
+								{
+									"key": "categories",
+									"value": "[1,2]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/chanels",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chanels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Eurosport",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "url",
+									"value": "http://google.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "no description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "logo",
+									"value": "logo.png",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/chanels",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chanels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set-archive",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/categories/archive",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"archive"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/chanels/messages?chanelId=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chanels",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "chanelId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-view",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/chanels/view",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chanels",
+								"view"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "validate-token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/auth/validate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password-link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "a.muradyan@inorain.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/auth/reset/link",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"reset",
+								"link"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "code",
+									"value": "7PZOnk",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "akmli6964",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register-link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "a.muradyan@inorain.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Arman",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/auth/register/link",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"register",
+								"link"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "code",
+									"value": "QtVV2d",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "akmli6964+64",
+									"type": "text"
+								},
+								{
+									"key": "repeatedPassword",
+									"value": "akmli6964+64",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{devUrl}}/users/auth/reset",
+							"host": [
+								"{{devUrl}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "a.muradyan@inorain.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "akmli6964",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "online",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/online",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"online"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-devices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/devices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"devices"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"userAgent\": \"PostmanRuntime/7.29.2\"}",
+									"disabled": true
+								},
+								{
+									"key": "pagintaion",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/me",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "a.muradyan@iniorain.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Arman Muradyan",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "akmli6964",
+									"type": "text"
+								},
+								{
+									"key": "packageId",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "packageId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-activity",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/users/activity",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "packages",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/packages?between={\"createdAt\": {\"from\": \"2022-09-01\",  \"to\": \"2022-09-10\"}}&pagination=1&page=1&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"packages"
+							],
+							"query": [
+								{
+									"key": "between",
+									"value": "{\"createdAt\": {\"from\": \"2022-09-01\",  \"to\": \"2022-09-10\"}}"
+								},
+								{
+									"key": "pagination",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Premium",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "schedulingType",
+									"value": "month",
+									"type": "text"
+								},
+								{
+									"key": "schedulingTime",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "priceId",
+									"value": "price_1LpbQLHXMdkj3Odukge8ZqiB",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/packages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Premium",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "schedulingType",
+									"value": "year",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "schedulingTime",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "description is here",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{devUrl}}/packages",
+							"host": [
+								"{{devUrl}}"
+							],
+							"path": [
+								"packages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{devUrl}}/packages",
+							"host": [
+								"{{devUrl}}"
+							],
+							"path": [
+								"packages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "billings",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/billings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"billings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-payments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/billings/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"billings",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subscribe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "packageId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/billings/subscribe?packageId=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"billings",
+								"subscribe"
+							],
+							"query": [
+								{
+									"key": "packageId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dashboard",
+			"item": [
+				{
+					"name": "get-subscriptions-chart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/dashboard/chart/subscription",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dashboard",
+								"chart",
+								"subscription"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2022",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "week",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-payments-chart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}/dashboard/chart/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dashboard",
+								"chart",
+								"payments"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2022",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "week",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dashboard/statistics",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dashboard",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-countries-data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dashboard/countries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dashboard",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "favorites",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/favorites",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "chanelId",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/favorites",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/favorites",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,32 @@
+.fav_categ-content-chanels-box {
+    background-color: #383434;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    height: 40px;
+    padding: 10px;
+}
+
+.fav_chanels-logo-box {
+    border-radius: 2px;
+    height: 30px;
+    margin-right: 10px;
+    object-fit: cover;
+    width: 69px;
+}
+
+.fav_categ-content-chanels-box>.fav_chanels-name-box {
+    width: 70px;
+    overflow: hidden;
+    height: 18px;
+    font-size: 13px;
+    color: #8f8f8f;
+    font-family: 'Mulish', sans-serif;
+}
+
+.fav_categ-content-chanels-box>span {
+    color: red;
+}

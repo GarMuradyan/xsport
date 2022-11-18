@@ -1,0 +1,65 @@
+.main_chat-and-similiar-chanels-box {
+    left: 1310px;
+    position: absolute;
+}
+
+.main_chat-box {width: 320px;display: flex;flex-direction: column;align-items: center;background-color: #363636;padding-bottom: 10px;overflow: hidden;transition: 0.4s;}
+
+.chat_title-box {display: flex;justify-content: center;height: 30px;background-color: #5c5c5c;align-items: center;width: 100%;border-radius: 4px;font-family: 'Mulish', sans-serif;}
+
+.chat_content-box {width: 309px;background-color: #4a4848;border-radius: 5px;height: 399px;overflow-y: auto;overflow-x: hidden;padding: 10px 15px;}
+
+.chat_input-box {width: 309px;background-color: #4a4848;margin-top: 5px;border-radius: 5px;height: 55px;display: flex;}
+
+.chat-input {width: 240px;height: 55px;outline: 0;padding-left: 10px;background-color: transparent;border: 0;color: white;font-family: 'Mulish', sans-serif;resize: none;padding-top: 10px;padding-bottom: 10px;padding-right: 5px;}
+
+.chat-input-line-box {height: 35px;border-right: 1px solid #6e6e6e;margin-left: 26px;margin-top: 10px;}
+
+.chat_input-box>span {margin-left: 19px;margin-top: 9px;transform: rotate(313deg);color: #6e6e6e;transition: 0.4s;}
+.chat-content-message-box {width: 250px;height: auto;margin-top: 10px;word-break: break-word;display: flex;justify-content: space-between;}
+
+.chat_input-box>span:hover {
+    color: white;
+}
+
+.message-box {
+    width: 200px;
+    font-family: 'Mulish', sans-serif;
+}
+
+.similar_chanels-box {width: 320px;}
+
+.similar_chanels-content-box {display: flex;height: 103px;margin-top: 10px;background-color: #3a3a3a;padding: 5px 0px;justify-content: space-between;transition: 0.3s;border-radius: 5px;}
+
+.similar_chanels-content-box:hover {
+    border: 1px solid white;
+}
+
+.similar_content-logo-box {
+    background-color: #fff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    width: 169px;
+    height: 100%;
+}
+
+
+.similar_content-logo {background-color: white;border-radius: 3px;height: 100%;object-fit: cover;width: 169px;}
+
+.similar_content-name {width: 76px;overflow: hidden;height: 110px;margin: 10px 30px 0px 0px;text-overflow: ellipsis;white-space: nowrap;font-family: 'Mulish', sans-serif;}
+
+.main_similar-box {
+    margin-top: 10px;
+}
+
+.similar_title-box {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    background-color: #5c5c5c;
+    align-items: center;
+    width: 100%;
+    font-family: 'Mulish', sans-serif;
+}
